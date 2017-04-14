@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndieSquareLink.Plugins", "IndieSquareLink.Plugins.csproj", "{9ACEE960-03F4-B96C-475C-0B637FBDDD26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndieSquareLink", "IndieSquareLink.csproj", "{EB7D3264-47EB-C268-38E1-55E321D3A2D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ACEE960-03F4-B96C-475C-0B637FBDDD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ACEE960-03F4-B96C-475C-0B637FBDDD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ACEE960-03F4-B96C-475C-0B637FBDDD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACEE960-03F4-B96C-475C-0B637FBDDD26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB7D3264-47EB-C268-38E1-55E321D3A2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB7D3264-47EB-C268-38E1-55E321D3A2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB7D3264-47EB-C268-38E1-55E321D3A2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB7D3264-47EB-C268-38E1-55E321D3A2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

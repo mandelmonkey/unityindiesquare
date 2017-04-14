@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiesquareSDK.Plugins", "IndiesquareSDK.Plugins.csproj", "{9BD47A24-2DDE-18BB-344E-93EF6BF609D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiesquareSDK", "IndiesquareSDK.csproj", "{24941BDF-370C-36F9-F94A-A043A22D9381}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BD47A24-2DDE-18BB-344E-93EF6BF609D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD47A24-2DDE-18BB-344E-93EF6BF609D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD47A24-2DDE-18BB-344E-93EF6BF609D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD47A24-2DDE-18BB-344E-93EF6BF609D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24941BDF-370C-36F9-F94A-A043A22D9381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24941BDF-370C-36F9-F94A-A043A22D9381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24941BDF-370C-36F9-F94A-A043A22D9381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24941BDF-370C-36F9-F94A-A043A22D9381}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

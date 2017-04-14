@@ -1,0 +1,12 @@
+﻿<!-- Please copy and paste this code in between <application></application> of "Plugins/Android/AndroidManifest.xml" -->
+        <!-- Start CustomUrlSchemeLauncherActivity -->
+        <activity android:name="org.westhill.customurlschemelauncher.CustomUrlSchemeLauncherActivity">
+            <intent-filter>
+                <!-- *Set your custom scheme name (example url >> your.scheme.name://hostname?param1=999&param2=111 >> set is "your.scheme.name" ) -->
+                <data android:scheme="your.scheme.name" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <!-- End CustomUrlSchemeLauncherActivity -->
