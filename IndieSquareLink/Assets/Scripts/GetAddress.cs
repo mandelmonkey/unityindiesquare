@@ -13,11 +13,6 @@ public class GetAddress : MonoBehaviour {
 
     public void LinkAddressIndieSquare()
 	{
-		System.Guid myGUID = System.Guid.NewGuid();
-		randomMessage = myGUID.ToString();
-
-		bool fail = false;
-
 		if (urlscheme != "") {
 			callUrlScheme("indiewallet","inc.lireneosoft.counterparty");
 		} else {
@@ -27,7 +22,6 @@ public class GetAddress : MonoBehaviour {
 	}
     public void LinkAddressBookOfOrbs()
     {
-
 		if (urlscheme != "") {
 			callUrlScheme("orbbook","inc.indiesquare.orbbook");
 		} else {
@@ -38,49 +32,40 @@ public class GetAddress : MonoBehaviour {
 
 	public void callUrlScheme(string appScheme,string appID){
 
-
-
 		Guid myGUID = Guid.NewGuid();
 		randomMessage = myGUID.ToString(); //generate random msg for the apps to sign and verify address
 
 		bool fail = false;
+
 			#if UNITY_IPHONE
-
-			Application.OpenURL(appScheme+"://x-callback-url/getaddress?msg="+randomMessage+"&x-success="+ urlscheme);
-
+			    Application.OpenURL(appScheme+"://x-callback-url/getaddress?msg="+randomMessage+"&x-success="+ urlscheme);
 			#endif
 			#if UNITY_ANDROID
+			    AndroidJavaClass up = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
+			    AndroidJavaObject ca = up.GetStatic<AndroidJavaObject> ("currentActivity");
+			    AndroidJavaObject packageManager = ca.Call<AndroidJavaObject> ("getPackageManager");
+			    AndroidJavaObject launchIntent = null;
 
-			AndroidJavaClass up = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
-			AndroidJavaObject ca = up.GetStatic<AndroidJavaObject> ("currentActivity");
-			AndroidJavaObject packageManager = ca.Call<AndroidJavaObject> ("getPackageManager");
-			AndroidJavaObject launchIntent = null;
+			    launchIntent = packageManager.Call<AndroidJavaObject> ("getLaunchIntentForPackage", appID);
+			    try {
+			        launchIntent.Call<AndroidJavaObject> ("putExtra", "source", "x-callback-url/getaddress?x-success=" + urlscheme + "&msg=" + randomMessage);
+			    } catch (System.Exception e) {
+			        fail = true;
+			    }
 
-			launchIntent = packageManager.Call<AndroidJavaObject> ("getLaunchIntentForPackage", appID);
-			try {
-			launchIntent.Call<AndroidJavaObject> ("putExtra", "source", "x-callback-url/getaddress?x-success=" + urlscheme + "&msg=" + randomMessage);
-			} catch (System.Exception e) {
-			fail = true;
-			}
-
-			if (fail) {
-			Debug.Log ("app not found");
-			} else {
-			ca.Call ("startActivity", launchIntent);
-			}
-			up.Dispose ();
-			ca.Dispose ();
-			packageManager.Dispose ();
-			launchIntent.Dispose ();
-
+			    if (fail) {
+			        Debug.Log ("app not found");
+			    } else {
+			        ca.Call ("startActivity", launchIntent);
+			    }
+			    up.Dispose ();
+			    ca.Dispose ();
+			    packageManager.Dispose ();
+			    launchIntent.Dispose ();
 			#endif
-		 
-
 	}
 		
-	void verifyAddress(string url){
-
-        Debug.Log("url is   " + url);
+	void verifyAddress(string url){ 
         if (url != null) { 
 			
 			url = url.Replace (urlscheme+"://", "");
@@ -94,22 +79,9 @@ public class GetAddress : MonoBehaviour {
 			string address = "";
 			string signature = "";
 
-			if (param.Length > 0) {
-				
-				 address = param [0];
-			
-			}
+			if (param.Length > 0) { address = param [0]; }
 
-			if (param.Length > 2) {
-				
-				 signature = param [2];
-			
-			}
-
-
-			Debug.Log ("Address   " + address);
-			Debug.Log ("Signature   " +  signature);
-			Debug.Log ("randomMessage   " +  randomMessage);
+			if (param.Length > 2) {  signature = param [2]; } 
 
 			try
 			{
@@ -178,10 +150,8 @@ public class GetAddress : MonoBehaviour {
 }
 	void OnApplicationPause(bool pauseStatus)
 	{
-		if(pauseStatus == false){
-
-			#if UNITY_IPHONE
-
+		if(pauseStatus == false){ 
+			#if UNITY_IPHONE 
 				string passedData = PlayerPrefs.GetString("url_scheme");
 				if (passedData != null) {
 					PlayerPrefs.DeleteKey("url_scheme");
@@ -190,20 +160,14 @@ public class GetAddress : MonoBehaviour {
 				}
 
 			#endif
-			#if UNITY_ANDROID
-
+			#if UNITY_ANDROID 
 				string query = CustomUrlSchemeAndroid.GetLaunchedUrlQuery();
-
 				if (query != null)
 				{ 
-
 					verifyAddress(query);
-
 				} 
-
 			#endif
-
 			}
 	}
-    
+   
 }
